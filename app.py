@@ -37,7 +37,7 @@ with col1:
 with col2:
     dropoff_latitude = st.number_input('Insert the dropoff latitude (40.49 to 40.92) :', format='%.5f', min_value=40.49, max_value=40.92,step=.001)
 
-'### 🧍 How many ?'
+'### 👥 How many ?'
 # Passenge Count
 passenger_count = st.number_input('How many will there be?', format='%d', min_value=1, max_value=4, value=1, step=1)
 
