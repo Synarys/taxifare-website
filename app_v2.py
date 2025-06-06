@@ -9,34 +9,39 @@ from streamlit_autorefresh import st_autorefresh
 st.set_page_config(layout="wide")
 
 # Geocoding direct
+OPENCAGE_API_KEY = "11b24ee69a5a401c8430eb81200df22e"
+
 def geocode(address):
     try:
-        url = "https://nominatim.openstreetmap.org/search"
-        params = {"q": address, "format": "json"}
-        headers = {
-            "User-Agent": "TaxiFareApp/1.0 (contact@votresite.com)"
+        url = f"https://api.opencagedata.com/geocode/v1/json"
+        params = {
+            "q": address,
+            "key": OPENCAGE_API_KEY,
+            "limit": 1
         }
-        r = requests.get(url, params=params, headers=headers)
+        r = requests.get(url, params=params)
         r.raise_for_status()
         data = r.json()
-        if data:
-            lat = float(data[0]["lat"])
-            lon = float(data[0]["lon"])
+        if data["results"]:
+            lat = data["results"][0]["geometry"]["lat"]
+            lon = data["results"][0]["geometry"]["lng"]
             return [lat, lon]
     except:
         return None
 
-# Geocoding inverse
 def reverse_geocode(lat, lon):
     try:
-        url = f"https://nominatim.openstreetmap.org/reverse"
-        params = {"lat": lat, "lon": lon, "format": "json"}
-        headers = {
-            "User-Agent": "TaxiFareApp/1.0 (contact@votresite.com)"
+        url = f"https://api.opencagedata.com/geocode/v1/json"
+        params = {
+            "q": f"{lat},{lon}",
+            "key": OPENCAGE_API_KEY,
+            "limit": 1
         }
-        r = requests.get(url, params=params, headers=headers)
+        r = requests.get(url, params=params)
         r.raise_for_status()
-        return r.json().get("display_name", "")
+        data = r.json()
+        if data["results"]:
+            return data["results"][0]["formatted"]
     except:
         return ""
 
