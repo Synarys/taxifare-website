@@ -13,7 +13,9 @@ def geocode(address):
     try:
         url = "https://nominatim.openstreetmap.org/search"
         params = {"q": address, "format": "json"}
-        headers = {"User-Agent": "streamlit-app"}
+        headers = {
+            "User-Agent": "TaxiFareApp/1.0 (contact@votresite.com)"
+        }
         r = requests.get(url, params=params, headers=headers)
         r.raise_for_status()
         data = r.json()
@@ -29,7 +31,9 @@ def reverse_geocode(lat, lon):
     try:
         url = f"https://nominatim.openstreetmap.org/reverse"
         params = {"lat": lat, "lon": lon, "format": "json"}
-        headers = {"User-Agent": "streamlit-app"}
+        headers = {
+            "User-Agent": "TaxiFareApp/1.0 (contact@votresite.com)"
+        }
         r = requests.get(url, params=params, headers=headers)
         r.raise_for_status()
         return r.json().get("display_name", "")
