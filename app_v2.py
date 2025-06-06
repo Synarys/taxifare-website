@@ -61,7 +61,7 @@ def create_map(pickup, dropoff):
     zoom = get_zoom_level(distance)
     center = [(pickup[0] + dropoff[0]) / 2, (pickup[1] + dropoff[1]) / 2]
 
-    m = folium.Map(location=center, zoom_start=zoom)
+    m = folium.Map(location=center, zoom_start=zoom, doubleClickZoom=False)  # <-- ici
     folium.Marker(pickup, tooltip="Pickup", icon=folium.Icon(color="green")).add_to(m)
     folium.Marker(dropoff, tooltip="Dropoff", icon=folium.Icon(color="red")).add_to(m)
     folium.PolyLine([pickup, dropoff], color="blue", weight=3).add_to(m)
