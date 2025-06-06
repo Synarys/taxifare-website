@@ -4,7 +4,7 @@ from datetime import datetime
 import requests
 
 
-'# 🚕 TaxiFareModel'
+'# 🚕 New York TaxiFareModel'
 
 
 # Initialisation une seule fois
@@ -23,19 +23,19 @@ col1, col2 = st.columns(2)
 
 # Pickup longitude
 with col1:
-    pickup_longitude = st.number_input('Insert the pickup longitude (-74.02 to -73.92) :', format='%.5f', min_value=-74.02, max_value=-73.92, step=.001)
+    pickup_longitude = st.number_input('Insert the pickup longitude (-74.27 to -73.68) :', format='%.5f', min_value=-74.27, max_value=-73.68, step=.001)
 
 # Pickup latitude
 with col2:
-    pickup_latitude = st.number_input('Insert the pickup latitude (40.70 to 40.88) :', format='%.5f', min_value=40.70, max_value=40.88,step=.001)
+    pickup_latitude = st.number_input('Insert the pickup latitude (40.49 to 40.92) :', format='%.5f', min_value=40.49, max_value=40.92,step=.001)
 
 # Pickup longitude
 with col1:
-    dropoff_longitude = st.number_input('Insert the dropoff longitude (-74.02 to -73.92) :', format='%.5f', min_value=-74.02, max_value=-73.92, step=.001)
+    dropoff_longitude = st.number_input('Insert the dropoff longitude (-74.27 to -73.68) :', format='%.5f', min_value=-74.27, max_value=-73.68, step=.001)
 
 # Pickup latitude
 with col2:
-    dropoff_latitude = st.number_input('Insert the dropoff latitude (40.70 to 40.88) :', format='%.5f', min_value=40.70, max_value=40.88,step=.001)
+    dropoff_latitude = st.number_input('Insert the dropoff latitude (40.49 to 40.92) :', format='%.5f', min_value=40.49, max_value=40.92,step=.001)
 
 '### 🧍 How many ?'
 # Passenge Count
